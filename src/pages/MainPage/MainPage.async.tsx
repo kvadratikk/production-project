@@ -1,3 +1,3 @@
 import { lazy } from 'react';
 
-export const MainPageAcync = lazy(() => import('./MainPage'))
+export const MainPageAcync = lazy(() => import('./MainPage'));
