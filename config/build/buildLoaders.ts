@@ -55,5 +55,15 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     ],
   }
 
+<<<<<<< HEAD
   return [fileLoader, svgLoader, babelLoader, typescriptLoader, cssLoader]
+=======
+  const typescriptLoader = {
+    test: /\.tsx?$/,
+    use: 'ts-loader',
+    exclude: /node_modules/,
+  }
+
+  return [typescriptLoader, cssLoader]
+>>>>>>> b08a34e3caa1b33ffa0cc9792fc2834663f7edad
 }
