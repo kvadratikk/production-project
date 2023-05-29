@@ -29,6 +29,9 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',
     'i18next/no-literal-string': ['error', { markupOnly: true }],
+    'max-len': ['error', { code: 100, ignoreComments: true }],
+    'implicit-arrow-linebreak': 'off',
+    'object-curly-newline': 'off',
   },
   ignorePatterns: ['jest.config.ts'],
   globals: {

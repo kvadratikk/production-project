@@ -1,5 +1,12 @@
 {
   "About": "About",
+  "Language": "Language",
+  "Loading": "Loading",
+  "Main Page": "Main Page",
+  "Not Found": "Not Found",
+  "Reload page": "Reload page",
+  "Unexpected error": "Unexpected error",
+  "throw error": "throw error",
   "Главная страница": "Главная страница",
   "О сайте": "О сайте",
   "Язык": "Язык"

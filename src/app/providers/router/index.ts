@@ -1,3 +1,4 @@
 import AppRouter from './ui/AppRouter';
+import { BugButton } from './ui/BugButton';
 
-export { AppRouter };
+export { AppRouter, BugButton };

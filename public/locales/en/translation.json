@@ -1,4 +1,9 @@
 {
-  "Главная страница": "Main page",
-  "Язык": "English"
+  "Not Found": "Page not found",
+  "Main Page": "Main page",
+  "Language": "Language",
+  "Loading": "Loading",
+  "Unexpected error": "An unexpected error has occurred",
+  "Reload page": "Refresh the page",
+  "throw error": "throw error"
 }
