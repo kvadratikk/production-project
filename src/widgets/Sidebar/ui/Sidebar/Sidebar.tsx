@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { LangSwitcher } from 'shared/ui/LangSwitcher/LangSwitcher';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher/ThemeSwitcher';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
@@ -17,11 +17,18 @@ export const Sidebar = ({ className }: SidebarProps) => {
 
   return (
     <div
+      data-testid="sidebar"
       className={classNames([styles.root, className], {
         [styles.collapsed]: collapsed,
       })}
     >
-      <Button type="button" onClick={onToggle} theme={ThemeButton.DEFAULT}>
+      <Button
+        data-testid="sidebar-toggle"
+        type="button"
+        onClick={onToggle}
+        theme={ThemeButton.DEFAULT}
+        // eslint-disable-next-line i18next/no-literal-string
+      >
         toggle
       </Button>
       <div className={styles.switchers}>
