@@ -2,6 +2,8 @@
   cursor: pointer;
   color: inherit;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .clear {
@@ -14,4 +16,11 @@
 
 .default {
   color: initial;
+}
+
+.outline {
+  padding: 10px 15px;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  background: none;
 }
