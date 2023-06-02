@@ -5,19 +5,10 @@ import { buildResolvers } from './buildResolvers';
 import { BuildOptions } from './types/config';
 import { buildDevServer } from './buildDevServer';
 
-export function buildWebpackConfig(
-  options: BuildOptions,
-): webpack.Configuration {
+export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
   const { mode, paths, isDev } = options;
 
-  const devOptions = {
-    devtool: 'inline-source-map',
-    devServer: buildDevServer(options),
-  };
-
-  const devConfig = isDev ? devOptions : {};
-
-  const config = {
+  const config: webpack.Configuration = {
     mode,
     entry: paths.entry,
     output: {
@@ -30,8 +21,12 @@ export function buildWebpackConfig(
       rules: buildLoaders(options),
     },
     resolve: buildResolvers(options),
-    ...devConfig,
   };
+
+  if (isDev) {
+    config.devtool = 'inline-source-map';
+    config.devServer = buildDevServer(options);
+  }
 
   return config;
 }
