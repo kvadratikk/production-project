@@ -12,10 +12,10 @@ export const Navbar = ({ className }: NavbarProps) => {
 
   return (
     <div className={classNames([styles.root, className])}>
-      <div className={styles.links}>
+      {/* <div className={styles.links}>
         <AppLink to="/">{t('Main Page')}</AppLink>
         <AppLink to="/about">{t('About')}</AppLink>
-      </div>
+      </div> */}
     </div>
   );
 };

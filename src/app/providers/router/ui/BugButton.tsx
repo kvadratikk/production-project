@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 
 export const BugButton = () => {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ export const BugButton = () => {
   }, [error]);
 
   return (
-    <Button onClick={throwError} theme={ThemeButton.DEFAULT}>
+    <Button onClick={throwError} theme={ButtonTheme.DEFAULT}>
       {t('throw error')}
     </Button>
   );

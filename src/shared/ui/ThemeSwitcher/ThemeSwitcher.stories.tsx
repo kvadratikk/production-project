@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { ThemeDecoratorInverted } from 'shared/config/storybook/ThemeDecoratorInverted/ThemeDecoratorInverted';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 export default {
@@ -15,7 +16,8 @@ const Template: ComponentStory<typeof ThemeSwitcher> = (args) => <ThemeSwitcher 
 
 export const Normal = Template.bind({});
 Normal.args = {};
+Normal.decorators = [ThemeDecoratorInverted()];
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+Dark.decorators = [ThemeDecoratorInverted(), ThemeDecorator(Theme.DARK)];

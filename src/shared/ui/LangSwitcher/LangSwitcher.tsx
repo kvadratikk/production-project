@@ -6,9 +6,10 @@ import styles from './LangSwitcher.module.scss';
 
 interface LangSwitcherProps {
   className?: string;
+  short?: boolean;
 }
 
-export const LangSwitcher = ({ className }: LangSwitcherProps) => {
+export const LangSwitcher = ({ className, short }: LangSwitcherProps) => {
   const { t, i18n } = useTranslation();
 
   const toggle = async () => {
@@ -17,7 +18,7 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
 
   return (
     <div className={classNames([styles.root, className])}>
-      <Button onClick={toggle}>{t('Language')}</Button>
+      <Button onClick={toggle}>{t(short ? 'Short Language' : 'Language')}</Button>
     </div>
   );
 };

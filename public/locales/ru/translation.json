@@ -1,10 +1,11 @@
 {
   "Not Found": "Страница не найдена",
   "Main Page": "Главная страница",
-  "Language": "Язык",
+  "Language": "Русский",
   "Loading": "Загрузка",
   "Unexpected error": "Произошла непредвиденная ошибка",
   "Reload page": "Обновить страницу",
   "throw error": "пробросить ошибку",
-  "About": "О нас"
+  "About": "О нас",
+  "Short Language": "Ru"
 }

@@ -1,10 +1,11 @@
 {
   "Not Found": "Page not found",
   "Main Page": "Main page",
-  "Language": "Language",
+  "Language": "English",
   "Loading": "Loading",
   "Unexpected error": "An unexpected error has occurred",
   "Reload page": "Refresh the page",
   "throw error": "throw error",
-  "About": "About Us"
+  "About": "About Us",
+  "Short Language": "En"
 }

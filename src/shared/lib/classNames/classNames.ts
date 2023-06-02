@@ -1,7 +1,9 @@
+import { wrapInArray } from '../wrapInArray/wrapInArray';
+
 type Mods = Record<string, boolean | string>;
 
-export function classNames(cls: string | string[], mods: Mods = {}): string {
-  const arrayCls = typeof cls === 'string' ? [cls] : cls;
+export const classNames = (cls: string | string[], mods: Mods = {}) => {
+  const arrayCls = wrapInArray(cls);
 
   return [
     ...arrayCls.filter(Boolean),
@@ -9,4 +11,4 @@ export function classNames(cls: string | string[], mods: Mods = {}): string {
       .filter(([_, value]) => value)
       .map(([className]) => className),
   ].join(' ');
-}
+};

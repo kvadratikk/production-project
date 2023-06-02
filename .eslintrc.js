@@ -64,6 +64,7 @@ module.exports = {
   ignorePatterns: ['jest.config.ts'],
   globals: {
     __IS_DEV__: true,
+    JSX: true,
   },
   overrides: [
     {

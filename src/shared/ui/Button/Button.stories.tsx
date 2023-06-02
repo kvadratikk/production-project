@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { Button, ThemeButton } from './Button';
+import { Button, ButtonSize, ButtonTheme } from './Button';
 import 'app/styles/index.scss';
 
 export default {
@@ -13,12 +13,16 @@ export default {
   },
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args) => (
+  <div>
+    <Button {...args} />
+  </div>
+);
 
 export const Primary = Template.bind({});
 Primary.args = {
   children: 'Text',
-  theme: ThemeButton.DEFAULT,
+  theme: ButtonTheme.DEFAULT,
 };
 
 export const Clear = Template.bind({});
@@ -29,13 +33,49 @@ Clear.args = {
 export const Outline = Template.bind({});
 Outline.args = {
   children: 'Text',
-  theme: ThemeButton.OUTLINE,
+  theme: ButtonTheme.OUTLINE,
 };
 
 export const OutlineDark = Template.bind({});
 OutlineDark.args = {
   children: 'Text',
-  theme: ThemeButton.OUTLINE,
+  theme: ButtonTheme.OUTLINE,
 };
 
 OutlineDark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const Background = Template.bind({});
+Background.args = {
+  children: 'Text',
+  theme: ButtonTheme.BACKGROUND,
+};
+
+export const BackgroundInverted = Template.bind({});
+BackgroundInverted.args = {
+  children: 'Text',
+  theme: ButtonTheme.BACKGROUND_INVERTED,
+};
+
+export const SquareSizeM = Template.bind({});
+SquareSizeM.args = {
+  children: '>',
+  theme: ButtonTheme.BACKGROUND_INVERTED,
+  square: true,
+  size: ButtonSize.M,
+};
+
+export const SquareSizeL = Template.bind({});
+SquareSizeL.args = {
+  children: '>',
+  theme: ButtonTheme.BACKGROUND_INVERTED,
+  square: true,
+  size: ButtonSize.L,
+};
+
+export const SquareSizeXL = Template.bind({});
+SquareSizeXL.args = {
+  children: '>',
+  theme: ButtonTheme.BACKGROUND_INVERTED,
+  square: true,
+  size: ButtonSize.XL,
+};
