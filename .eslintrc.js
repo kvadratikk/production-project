@@ -60,6 +60,7 @@ module.exports = {
     ],
     'implicit-arrow-linebreak': 'off',
     'object-curly-newline': 'off',
+    'wrap-iife': ['error', 'inside'],
   },
   ignorePatterns: ['jest.config.ts'],
   globals: {
