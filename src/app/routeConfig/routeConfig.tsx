@@ -1,6 +1,7 @@
 import { AboutPage } from 'pages/AboutPage';
 import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
+import { ReactNode } from 'react';
 import { RouteProps } from 'react-router-dom';
 import AboutIcon from 'shared/assets/icons/about.svg';
 import MainIcon from 'shared/assets/icons/main.svg';
@@ -12,7 +13,7 @@ export enum AppRoutes {
 
 type RouteConfig = RouteProps & {
   key?: string;
-  icon?: JSX.Element;
+  icon?: ReactNode;
 };
 
 export const routeConfig: RouteConfig[] = [

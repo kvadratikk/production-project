@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 import { useTheme } from './providers/ThemeProvider';
@@ -9,8 +8,10 @@ import './styles/index.scss';
 export const App = () => {
   const { theme } = useTheme();
 
+  document.body.setAttribute('class', theme);
+
   return (
-    <div className={classNames(['app', theme])}>
+    <div className="app">
       <Suspense fallback="">
         <Navbar />
         <div className="content-page">
