@@ -6,7 +6,7 @@ import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher/ThemeSwitcher';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
-import { routeConfig } from 'app/routeConfig/routeConfig';
+import { routeConfig } from 'app/providers/router/config/routeConfig';
 import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
