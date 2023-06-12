@@ -8,10 +8,12 @@
   pointer-events: none;
   z-index: var(--modal-z-index);
   transition: 0.3s opacity;
+  color: var(--primary-color);
 }
 
 .overlay {
   height: 100%;
+  width: 100%;
   background: var(--overlay-color);
   display: flex;
   align-items: center;
@@ -21,11 +23,10 @@
 .content {
   padding: 20px;
   border-radius: 12px;
-  background: var(--primary-color);
-  color: var(--bg-color);
   transition: 0.3s transform;
   transform: scale(0.5);
   max-width: 60%;
+  background: var(--bg-color);
 }
 
 .opened {

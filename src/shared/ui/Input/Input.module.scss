@@ -1,0 +1,64 @@
+.root {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: transparent;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.background {
+    text-shadow: 0 0 0 var(--primary-color);
+  }
+
+  &.backgroundInverted {
+    text-shadow: 0 0 0 var(--inverted-primary-color);
+  }
+}
+
+.placeholder {
+  margin-right: 5px;
+}
+
+.inputWrapper {
+  align-items: center;
+  display: flex;
+}
+
+.caretWrapper {
+  flex-grow: 1;
+  position: relative;
+}
+
+.caret {
+  position: absolute;
+  height: 3px;
+  width: 9px;
+  bottom: 0;
+  left: 0;
+  animation: blink 1s forwards infinite;
+
+  &.background {
+    background: var(--primary-color);
+  }
+
+  &.backgroundInverted {
+    background: var(--inverted-primary-color);
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.01;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

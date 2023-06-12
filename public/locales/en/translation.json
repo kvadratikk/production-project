@@ -8,5 +8,8 @@
   "throw error": "throw error",
   "About": "About Us",
   "Short Language": "En",
-  "Log in": "Log In"
+  "Log in": "Log In",
+  "Enter": "Enter",
+  "Enter username": "Enter login",
+  "Enter password": "Enter password"
 }

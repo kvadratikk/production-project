@@ -1,5 +1,8 @@
 {
   "About": "About",
+  "Enter": "Enter",
+  "Enter password": "Enter password",
+  "Enter username": "Enter username",
   "Language": "English",
   "Loading": "Loading",
   "Log in": "",
@@ -8,6 +11,8 @@
   "Reload page": "Reload page",
   "Unexpected error": "Unexpected error",
   "throw error": "throw error",
+  "Введите логин": "Введите логин",
+  "Введите пароль": "Введите пароль",
   "Главная страница": "Главная страница",
   "О сайте": "О сайте",
   "Язык": "Язык"

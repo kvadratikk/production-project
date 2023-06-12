@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 
-import { MouseEvent, ReactNode, useCallback, useEffect } from 'react';
+import { MouseEvent, ReactNode, useCallback, useEffect, useState } from 'react';
 import { Portal } from '../Portal/Portal';
 import styles from './Modal.module.scss';
 
@@ -9,12 +9,15 @@ interface ModalProps {
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
+  lazy?: boolean;
 }
 
-export const Modal = ({ className, children, isOpen, onClose }: ModalProps) => {
+export const Modal = ({ className, children, isOpen, onClose, lazy }: ModalProps) => {
   const mods: Record<string, boolean> = {
     [styles.opened]: isOpen,
   };
+
+  const [isMounted, setIsMounted] = useState(false);
 
   const onContentClick = (e: MouseEvent) => {
     e.stopPropagation();
@@ -28,6 +31,10 @@ export const Modal = ({ className, children, isOpen, onClose }: ModalProps) => {
   );
 
   useEffect(() => {
+    if (isOpen) setIsMounted(true);
+  }, [isOpen]);
+
+  useEffect(() => {
     if (isOpen) window.addEventListener('keydown', onKeyDown);
 
     return () => {
@@ -37,10 +44,10 @@ export const Modal = ({ className, children, isOpen, onClose }: ModalProps) => {
 
   return (
     <Portal>
-      <div className={classNames([styles.root, className], mods)}>
+      <div className={classNames(styles.root, mods)}>
         <div className={styles.overlay} onClick={onClose}>
-          <div className={styles.content} onClick={onContentClick}>
-            {children}
+          <div className={classNames([styles.content, className])} onClick={onContentClick}>
+            {lazy && !isMounted ? null : children}
           </div>
         </div>
       </div>

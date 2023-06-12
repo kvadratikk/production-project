@@ -8,5 +8,8 @@
   "throw error": "пробросить ошибку",
   "About": "О нас",
   "Short Language": "Ru",
-  "Log in": "Войти"
+  "Log in": "Войти",
+  "Enter": "Войти",
+  "Enter username": "Введите логин",
+  "Enter password": "Введите пароль"
 }
