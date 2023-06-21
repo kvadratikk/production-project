@@ -72,7 +72,7 @@ export const Input = memo((props: InputProps) => {
           ref={ref}
           className={classNames([styles.root, styles[theme]])}
           type={type}
-          value={value}
+          value={value || ''}
           onChange={onChangeHandler}
           onFocus={onFocus}
           onBlur={onBlur}

@@ -31,7 +31,14 @@ export const Modal = ({ className, children, isOpen, onClose, lazy }: ModalProps
   );
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> = null;
+
     if (isOpen) setIsMounted(true);
+    else timer = setTimeout(() => setIsMounted(false), 300);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [isOpen]);
 
   useEffect(() => {
