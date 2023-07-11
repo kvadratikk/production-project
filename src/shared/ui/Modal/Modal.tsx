@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Mods, classNames } from 'shared/lib/classNames/classNames';
 
 import { MouseEvent, ReactNode, useCallback, useEffect, useState } from 'react';
 import { Portal } from '../Portal/Portal';
@@ -8,12 +8,12 @@ interface ModalProps {
   className?: string;
   children?: ReactNode;
   isOpen?: boolean;
-  onClose?: () => void;
+  onClose: () => void;
   lazy?: boolean;
 }
 
 export const Modal = ({ className, children, isOpen, onClose, lazy }: ModalProps) => {
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [styles.opened]: isOpen,
   };
 
@@ -31,13 +31,13 @@ export const Modal = ({ className, children, isOpen, onClose, lazy }: ModalProps
   );
 
   useEffect(() => {
-    let timer: ReturnType<typeof setTimeout> = null;
+    let timer: ReturnType<typeof setTimeout> | null = null;
 
     if (isOpen) setIsMounted(true);
     else timer = setTimeout(() => setIsMounted(false), 300);
 
     return () => {
-      clearTimeout(timer);
+      if (timer) clearTimeout(timer);
     };
   }, [isOpen]);
 

@@ -1,0 +1,27 @@
+.root {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  svg {
+    fill: var(--inverted-secondary-color);
+  }
+}
+
+.text {
+  white-space: nowrap;
+  width: auto;
+  opacity: 1;
+  transition: opacity 0.3s;
+  visibility: visible;
+}
+
+.collapsed {
+  gap: 0;
+
+  .text {
+    opacity: 0;
+    width: 0;
+    visibility: hidden;
+  }
+}

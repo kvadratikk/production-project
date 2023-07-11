@@ -1,0 +1,15 @@
+.root {
+  padding: 20px;
+  border: 2px solid var(--inverted-bg-color);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.data {
+  display: flex;
+  gap: 10px;
+}

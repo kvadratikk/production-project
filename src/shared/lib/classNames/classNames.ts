@@ -1,8 +1,10 @@
 import { wrapInArray } from '../wrapInArray/wrapInArray';
 
-type Mods = Record<string, boolean | string>;
+export type Mods = Record<string, boolean | string | undefined>;
 
-export const classNames = (cls: string | string[], mods: Mods = {}) => {
+type Cls = string | Array<string | undefined>;
+
+export const classNames = (cls: Cls, mods: Mods = {}) => {
   const arrayCls = wrapInArray(cls);
 
   return [

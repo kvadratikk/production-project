@@ -1,3 +1,5 @@
 import { isString } from '../isString/isString';
 
-export const wrapInArray = (value: string | string[]) => (isString(value) ? [value] : value);
+type Value = string | Array<string | undefined>;
+
+export const wrapInArray = (value: Value) => (isString(value) ? [value] : value.filter(isString));
