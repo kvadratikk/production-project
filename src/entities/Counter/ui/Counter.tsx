@@ -1,11 +1,12 @@
 /* eslint-disable i18next/no-literal-string */
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from 'shared/ui/Button/Button';
 import { getCounter } from '../model/selectors/getCounter/getCounter';
 import { counterActions } from '../model/slice/counterSlice';
 
 export const Counter = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const { value } = useSelector(getCounter);
 

@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 
-import { ButtonHTMLAttributes, FC } from 'react';
+import { ButtonHTMLAttributes, memo } from 'react';
 import { wrapInArray } from 'shared/lib/wrapInArray/wrapInArray';
 import styles from './Button.module.scss';
 
@@ -26,15 +26,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
 }
 
-export const Button: FC<ButtonProps> = ({
-  className,
-  children,
-  theme = ButtonTheme.CLEAR,
-  square,
-  disabled,
-  size = ButtonSize.M,
-  ...otherProps
-}) => {
+export const Button = memo((props: ButtonProps) => {
+  const {
+    className,
+    children,
+    theme = ButtonTheme.CLEAR,
+    square,
+    disabled,
+    size = ButtonSize.M,
+    ...otherProps
+  } = props;
+
   const themes = wrapInArray(theme);
 
   const mods = {
@@ -55,4 +57,4 @@ export const Button: FC<ButtonProps> = ({
       {children}
     </button>
   );
-};
+});

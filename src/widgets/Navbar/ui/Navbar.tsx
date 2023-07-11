@@ -1,22 +1,22 @@
-/* eslint-disable i18next/no-literal-string */
-import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { useCallback, useState } from 'react';
-import { LoginModal } from 'fearures/AuthByUsername';
-import { useDispatch, useSelector } from 'react-redux';
 import { getUser, userActions } from 'entities/User';
+import { LoginModal } from 'fearures/AuthByUsername';
+import { memo, useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
   className?: string;
 }
 
-export const Navbar = ({ className }: NavbarProps) => {
+export const Navbar = memo(({ className }: NavbarProps) => {
   const { t } = useTranslation();
   const { authData } = useSelector(getUser);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [isAuthModal, setIsAuthModal] = useState(false);
 
@@ -30,6 +30,7 @@ export const Navbar = ({ className }: NavbarProps) => {
 
   const onLogout = useCallback(() => {
     dispatch(userActions.logout());
+    setIsAuthModal(false);
   }, [dispatch]);
 
   return (
@@ -42,7 +43,7 @@ export const Navbar = ({ className }: NavbarProps) => {
         {t(authData ? 'Log out' : 'Log in')}
       </Button>
 
-      <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+      <LoginModal isOpen={isAuthModal && !authData} onClose={onCloseModal} />
     </div>
   );
-};
+});

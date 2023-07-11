@@ -1,45 +1,40 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 
-import { useState } from 'react';
+import { routeConfig } from 'app/providers/router/config/routeConfig';
+import { memo, useState } from 'react';
+import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { LangSwitcher } from 'shared/ui/LangSwitcher/LangSwitcher';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher/ThemeSwitcher';
-import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { useTranslation } from 'react-i18next';
-import { routeConfig } from 'app/providers/router/config/routeConfig';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
   className?: string;
 }
 
-export const Sidebar = ({ className }: SidebarProps) => {
-  const { t } = useTranslation();
-  const [collapsed, setCollapsed] = useState(false);
+export const Sidebar = memo(({ className }: SidebarProps) => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
-  const onToggle = () => setCollapsed((prev) => !prev);
+  const onToggle = () => setIsCollapsed((prev) => !prev);
 
   return (
     <div
       data-testid="sidebar"
       className={classNames([styles.root, className], {
-        [styles.collapsed]: collapsed,
+        [styles.collapsed]: isCollapsed,
       })}
     >
       <div className={styles.links}>
         {routeConfig
           .filter(({ key }) => key)
           .map(({ path, key, icon }) => (
-            <AppLink to={`/${path}`} className={styles.link} key={path}>
-              {icon}
-              <div className={styles.text}>{t(key)}</div>
-            </AppLink>
+            <SidebarItem path={path} isColladsed={isCollapsed} icon={icon} key={path} text={key} />
           ))}
       </div>
 
       <div className={styles.switchers}>
         <ThemeSwitcher />
-        <LangSwitcher short={collapsed} />
+        <LangSwitcher short={isCollapsed} />
       </div>
 
       <Button
@@ -51,8 +46,8 @@ export const Sidebar = ({ className }: SidebarProps) => {
         square
         size={ButtonSize.XL}
       >
-        {collapsed ? '>' : '<'}
+        {isCollapsed ? '>' : '<'}
       </Button>
     </div>
   );
-};
+});
