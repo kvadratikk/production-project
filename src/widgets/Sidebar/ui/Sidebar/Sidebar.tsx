@@ -6,7 +6,6 @@ import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { LangSwitcher } from 'shared/ui/LangSwitcher/LangSwitcher';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher/ThemeSwitcher';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
-
 import styles from './Sidebar.module.scss';
 
 interface SidebarProps {

@@ -7,12 +7,13 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { ReducersList, useModuleLoader } from 'shared/lib/hooks/useModuleLoader/useModuleLoader';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { getLoginState } from '../../model/selectors/getLoginState/getLoginState';
+import { getLoginState } from 'fearures/AuthByUsername/model/selectors/getLoginState/getLoginState';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { TextTheme, Text } from 'shared/ui/Text/Text';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
+
 import styles from './LoginForm.module.scss';
 
 export interface LoginFormProps {
