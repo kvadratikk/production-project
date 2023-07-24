@@ -1,18 +1,24 @@
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { ReactNode, memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { RouteConfig } from 'app/providers/router/config/routeConfig';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { useSelector } from 'react-redux';
+import { getUser } from 'entities/User';
 import styles from './SidebarItem.module.scss';
 
 interface SidebarItemProps {
-  path: string;
-  text: string;
-  icon: ReactNode;
+  item: RouteConfig;
   isColladsed: boolean;
 }
 
-export const SidebarItem = memo(({ path, text, icon, isColladsed }: SidebarItemProps) => {
+export const SidebarItem = memo(({ item, isColladsed }: SidebarItemProps) => {
+  const { path, key, icon, authOnly } = item;
+
   const { t } = useTranslation();
+  const { authData } = useSelector(getUser);
+
+  if (authOnly && !authData) return null;
 
   return (
     <AppLink
@@ -20,7 +26,7 @@ export const SidebarItem = memo(({ path, text, icon, isColladsed }: SidebarItemP
       className={classNames(styles.root, { [styles.collapsed]: isColladsed })}
     >
       {icon}
-      <div className={styles.text}>{t(text)}</div>
+      <div className={styles.text}>{t(String(key))}</div>
     </AppLink>
   );
 });

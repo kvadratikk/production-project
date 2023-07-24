@@ -14,9 +14,10 @@ export enum AppRoutes {
   PROFILE = 'profile',
 }
 
-type RouteConfig = RouteProps & {
+export type RouteConfig = RouteProps & {
   key?: string;
   icon?: ReactNode;
+  authOnly?: boolean;
 };
 
 export const routeConfig: RouteConfig[] = [
@@ -37,6 +38,7 @@ export const routeConfig: RouteConfig[] = [
     element: <ProfilePage />,
     key: 'Profile Page',
     icon: <ProfileIcon />,
+    authOnly: true,
   },
   {
     path: '*',

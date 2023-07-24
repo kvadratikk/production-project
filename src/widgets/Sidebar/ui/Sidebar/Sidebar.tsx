@@ -27,14 +27,8 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
       <div className={styles.links}>
         {routeConfig
           .filter(({ key }) => key)
-          .map(({ path, key, icon }) => (
-            <SidebarItem
-              path={String(path)}
-              isColladsed={isCollapsed}
-              icon={icon}
-              key={path}
-              text={String(key)}
-            />
+          .map((route) => (
+            <SidebarItem item={route} isColladsed={isCollapsed} key={route.path} />
           ))}
       </div>
 

@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import {
   ChangeEvent,
   InputHTMLAttributes,
@@ -32,12 +32,20 @@ export const Input = memo((props: InputProps) => {
     placeholder,
     theme = InputTheme.BACKGROUND,
     autoFocus,
+    readOnly,
     ...otherProps
   } = props;
 
+  const mods: Mods = {
+    [styles.readonly]: readOnly,
+  };
+
   const ref = useRef<HTMLInputElement>(null);
+
   const [isFocused, setIsFocused] = useState(false);
   const [caretPosition, setCaretPosition] = useState(0);
+
+  const isCaretVisivle = isFocused && !readOnly;
 
   useEffect(() => {
     if (autoFocus) {
@@ -47,8 +55,8 @@ export const Input = memo((props: InputProps) => {
   }, [autoFocus]);
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.target.value);
-    setCaretPosition(e.target.value.length);
+    const isCaretBlocked = onChange?.(e.target.value);
+    if (!isCaretBlocked) setCaretPosition(e.target.value.length);
   };
 
   const onFocus = () => {
@@ -70,7 +78,8 @@ export const Input = memo((props: InputProps) => {
       <div className={styles.caretWrapper}>
         <input
           ref={ref}
-          className={classNames([styles.root, styles[theme]])}
+          readOnly={readOnly}
+          className={classNames([styles.root, styles[theme]], mods)}
           type={type}
           value={value || ''}
           onChange={onChangeHandler}
@@ -80,7 +89,7 @@ export const Input = memo((props: InputProps) => {
           {...otherProps}
         />
 
-        {isFocused && (
+        {isCaretVisivle && (
           <span
             className={classNames([styles.caret, styles[theme]])}
             style={{ left: `${caretPosition * 9}px` }}

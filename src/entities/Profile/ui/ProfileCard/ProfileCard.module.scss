@@ -1,15 +1,28 @@
 .root {
   padding: 20px;
   border: 2px solid var(--inverted-bg-color);
-}
-
-.header {
+  min-height: 350px;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
+  align-items: center;
 }
 
 .data {
   display: flex;
+  flex-direction: column;
   gap: 10px;
+  width: 100%;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editing {
+  border: 2px solid var(--inverted-secondary-color);
+}
+
+.error {
+  justify-content: center;
 }
